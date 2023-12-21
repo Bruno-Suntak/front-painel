@@ -1,0 +1,23 @@
+<div>
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link active" id="relatorio-tab" data-toggle="tab" href="relatorio" role="tab" aria-controls="relatorio" aria-selected="true">Relatório</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="grafico-tab" data-toggle="tab" href="grafico" role="tab" aria-controls="grafico" aria-selected="false">Gráfico</a>
+    </li>
+  </ul>
+
+  <div class="tab-content">
+    <div class="tab-pane fade show active" id="relatorio" role="tabpanel">
+      <div *ngFor="let item of dadosRelatorio">
+        {{ item.nome }} - {{ item.valor }}
+      </div>
+      
+      <button (click)="exportarExcel()">Exportar para Excel</button>
+    </div>
+    <div class="tab-pane fade" id="grafico" role="tabpanel">
+      <app-grafico></app-grafico>
+    </div>
+  </div>
+</div>
