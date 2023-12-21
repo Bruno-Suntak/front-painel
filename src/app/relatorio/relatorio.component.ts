@@ -33,12 +33,11 @@ export class RelatorioComponent implements OnInit {
     const dadosExportacao: any[] = [];
     this.dadosRelatorio.forEach(item => {
       dadosExportacao.push({
-        Campo: item.Campo,
-        Data: item.Data,
-        Gestor: item.Gestor,
-        Colaborador: item.Colaborador,
-        Cliente: item.Cliente,
-        Produto: item.Produto
+        Data: item.data,
+        Gestor: item.gestor,
+        Colaborador: item.colaborador,
+        Cliente: item.cliente,
+        Produto: item.produto
       });
     });
 

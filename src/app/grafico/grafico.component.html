@@ -1,6 +1,22 @@
 <div>
-    <div *ngFor="let item of dadosGrafico">
-      <!-- Exemplo: Mostrar os dados do gráfico -->
-      {{ item.categoria }} - {{ item.valor }}
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link" id="relatorio-tab" data-toggle="tab" href="relatorio" role="tab" aria-controls="relatorio" aria-selected="true">Relatório</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link active" id="grafico-tab" data-toggle="tab" href="grafico" role="tab" aria-controls="grafico" aria-selected="false">Gráfico</a>
+    </li>
+  </ul>
+
+  <div class="tab-content">
+    <div class="tab-pane fade" id="relatorio" role="tabpanel">
     </div>
+    <div class="tab-pane fade show active" id="grafico" role="tabpanel">
+      <div>
+        <div *ngFor="let item of dadosGrafico">
+          {{ item.count }} - {{ item.name }}
+        </div>
+    </div>
+    </div>
+  </div>
 </div>

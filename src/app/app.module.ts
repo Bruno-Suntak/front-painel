@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { PainelComponent } from './painel/painel.component';
 import { RelatorioComponent } from './relatorio/relatorio.component';
 import { GraficoComponent } from './grafico/grafico.component';
+import { ChartComponent } from './chart/chart.component'
 import { CommonModule } from '@angular/common';
 import { appRoutes } from './app.routes';
 
@@ -20,6 +21,9 @@ import { appRoutes } from './app.routes';
       GraficoModule,
       RelatorioModule,
     ],
+    declarations: [
+      ChartComponent,
+    ]
   })
   export class AppModule {
     ngDoBootstrap(appRef: ApplicationRef): void {
