@@ -1,21 +1,19 @@
-<div>
-  <ul class="nav nav-tabs">
-    <li class="nav-item">
-      <a class="nav-link" id="relatorio-tab" data-toggle="tab" href="relatorio" role="tab" aria-controls="relatorio" aria-selected="true">Relatório</a>
+<div class="col-md-8 justify-content-center" style="margin-left: 15%; margin-top: 5%;">
+  <ul class="nav nav-tabs justify-content-center">
+    <li class="nav-item justify-content-center">
+      <a class="nav-link justify-content-center" id="relatorio-tab" data-toggle="tab" href="relatorio" role="tab" aria-controls="relatorio" aria-selected="true">Relatório</a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link active" id="grafico-tab" data-toggle="tab" href="grafico" role="tab" aria-controls="grafico" aria-selected="false">Gráfico</a>
+    <li class="nav-item justify-content-center">
+      <a class="nav-link active justify-content-center" id="grafico-tab" data-toggle="tab" href="grafico" role="tab" aria-controls="grafico" aria-selected="false">Gráfico</a>
     </li>
   </ul>
 
-  <div class="tab-content">
+  <div class="tab-content justify-content-center">
     <div class="tab-pane fade" id="relatorio" role="tabpanel">
     </div>
-    <div class="tab-pane fade show active" id="grafico" role="tabpanel">
-      <div>
-        <div *ngFor="let item of dadosGrafico">
-          {{ item.count }} - {{ item.name }}
-        </div>
+    <div class="tab-pane fade show active justify-content-center" id="grafico" role="tabpanel">
+      <div class="justify-content-center">
+        <canvas #graficoCanvas></canvas>
     </div>
     </div>
   </div>

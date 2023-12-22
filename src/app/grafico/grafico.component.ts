@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { GraficoService } from '../grafico.service';
+import { Chart } from 'chart.js';
 
 @Component({
   selector: 'app-grafico',
@@ -7,41 +8,63 @@ import { GraficoService } from '../grafico.service';
   styleUrls: ['./grafico.component.css']
 })
 export class GraficoComponent implements OnInit {
-
-  chartData: {
-    labels: string[];
-    datasetLabel: string;
-    datasetData: number[];
-    datasetBackgroundColor: string[];
-    datasetBorderColor: string[];
-  } = {
-    labels: ['Categoria 1', 'Categoria 2', 'Categoria 3'],
-    datasetLabel: 'Contagem',
-    datasetData: [10, 20, 15],
-    datasetBackgroundColor: [
-      'rgba(255, 99, 132, 0.5)',
-      'rgba(54, 162, 235, 0.5)',
-      'rgba(255, 206, 86, 0.5)',
-    ],
-    datasetBorderColor: [
-      'rgba(255, 99, 132, 1)',
-      'rgba(54, 162, 235, 1)',
-      'rgba(255, 206, 86, 1)',
-    ],
-  };
+  @ViewChild("graficoCanvas", { static: true })
+  elemento!: ElementRef;
 
   dadosGrafico: any[] = [];
 
   constructor(private graficoService: GraficoService) {}
 
   ngOnInit() {
+;
+
     this.carregarGrafico();
   }
 
   carregarGrafico() {
+    let data:any;
+    let labels:any = [];
+    let count:any = [];
+    let chart:any;
+
+    if (chart) chart.destroy()
+    
     this.graficoService.obterDadosGrafico().subscribe(
       (dados: any[]) => {
         this.dadosGrafico = dados;
+
+        for (let index = 0; index < this.dadosGrafico.length; index++) {
+          const element = this.dadosGrafico[index];
+
+          if (!element.name) break;
+          if (!element.count) break;
+
+          labels.push(element.name);
+
+          count.push(element.count);
+
+        }
+
+        chart = new Chart(this.elemento.nativeElement, {
+          type: 'bar',
+          data: {
+            labels: labels,
+            datasets: [
+              {
+                data: count
+              },
+            ]
+          },
+          options: {
+            plugins: {
+              legend: {
+                display: false
+              }
+            }
+            
+          }
+        });
+        
       },
       error => {
         console.error('Erro ao obter dados do gráfico', error);

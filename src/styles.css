@@ -1,1 +1,15 @@
-@import "../node_modules/bootstrap/dist/css/bootstrap.min.css" 
+@import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+
+.center{
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#nav-bar-relatorio:hover{
+    color: #08a310; 
+
+    transition: 0.5s;
+
+    opacity: 0.7;
+}
